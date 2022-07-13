@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="CollectionViewScrollToIssue.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <Grid Padding="5" RowDefinitions=".1*, .9*">
+        <Button Clicked="Button_Clicked" Text="Manual Scrolling" />
+        <CollectionView
+            x:Name="collectionView"
+            Grid.Row="1"
+            IsGrouped="True"
+            ItemsSource="{Binding PeopleList}"
+            Scrolled="collectionView_Scrolled">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Label Text="{Binding Name}" />
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+            <CollectionView.GroupHeaderTemplate>
+                <DataTemplate>
+                    <Label
+                        BackgroundColor="LightGray"
+                        FontAttributes="Bold"
+                        FontSize="Large"
+                        Text="{Binding Name}"
+                        TextColor="Black" />
+                </DataTemplate>
+            </CollectionView.GroupHeaderTemplate>
+            <CollectionView.GroupFooterTemplate>
+                <DataTemplate>
+                    <Label
+                        Margin="0,0,0,10"
+                        Text="{Binding Count, StringFormat='Total Products: {0:D}'}"
+                        TextColor="MidnightBlue" />
+                </DataTemplate>
+            </CollectionView.GroupFooterTemplate>
+        </CollectionView>
+    </Grid>
+
+</ContentPage>
